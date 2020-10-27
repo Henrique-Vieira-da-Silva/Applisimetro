@@ -1,0 +1,138 @@
+html,body{
+	margin: 0;
+}
+
+body{
+	background-image: url("../img/fundoSemDesfoque.jpg");
+	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none; 
+}
+
+header{
+	background-color: lightblue;
+	display: flex;
+	padding: 10px;
+	font-family: sans-serif;
+	font-size: 20px;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow:10px 20px 50px 1px grey;
+	border-bottom-left-radius: 20px; 
+}
+
+button {
+    font-family: sans-serif;
+    font-size: 3vw;
+    color: black;
+    display: inline-flex;
+    justify-content:  center;
+    text-justify: initial;
+}
+
+button:focus {
+  outline: none;
+}
+
+div {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#bIniciais, #bAjuda, #bEntrar {
+    border: none;
+    color: #ffffff;
+    background-color: royalblue;
+    padding: 20px;
+    margin: 10px;
+    font-size: 24px;
+    line-height: 24px;
+    border-radius: 10px;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 400ms ease;
+    
+} 
+#bConfiguracao {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+    transition: all 400ms ease;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+#bConfiguracao:hover{
+	background-color: royalblue;
+	cursor: pointer;
+}
+
+#bConfiguracao img:hover{	
+	-webkit-animation: rotation 5s infinite linear;
+}
+	@-webkit-keyframes rotation {
+		from{
+
+			-webkit-transform:rotate(0deg);
+		}
+		to{
+			-webkit-transform:rotate(360deg);
+		}
+	}
+
+#bIniciais {
+}
+
+#bAjuda {
+    background-color: yellowgreen;
+}
+
+#bAjuda:before {
+    content: '';
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 0px;
+    height: 64px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    transition: all ease;
+}
+
+#bAjuda:houver:before {
+    width: 100%;
+    
+}
+    
+#bEntrar {
+    background-color: aqua;
+}
+    
+#bEntrar:before {
+    content: '';
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 0px;
+    height: 64px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    transition: all ease;
+}
+
+#bEntrar:houver:before {
+    width: 100%;
+}
+
+.imageicon {
+    width: 4.5vw;
+    height: 4.5vw;
+}
+.img {
+	width: 4vw;
+    height: 4vw;
+}

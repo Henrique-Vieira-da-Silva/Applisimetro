@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Configuração de Rede</title>
+
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="./assets/css/estilo.css">
+        <link rel="shortcut icon" href="./assets/img/unesp-logo-11.png">
+        <link rel="stylesheet" href="./assets/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- js -->
+        <script src="./assets/js/jquery.min.js"></script>
+        <script src="./assets/js/bootstrap.js"></script>
+        <script src="./assets/js/jquery.mask.min.js"></script>
+        <script src="./assets/js/angular.min.js"></script>
+
+        <style>
+            button{
+                color: #fff;
+                background-color: #4142a5;
+                border-color: #4142a5;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-blue">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./assets/img/unesp-logo-8.png" class="logo-mini" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.php">Dados em tempo Real</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="customizacao.php">Configuração de rede</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Configuração de parâmetro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="outros_produtos.php">Graficos</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="wrap">
+            <div id="main" class="container-fluid clear-top">
+                <form autocomplete="off" method="POST" class="form" action="controllers/cadastroController.php">
+                    <div class="form-group" style="padding: 10px;">
+                        <label class="label-control">Endereço Ip</label>
+                        <input type="text" name="enderecoIp" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+                    </div>
+                    <div class="form-group" style="padding: 10px;">
+                        <label class="label-control">Numero de série</label>
+                        <input type="text" name="numeroSerie" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+                    </div>
+                    <div class="form-group" style="padding: 10px;">
+                        <label class="label-control">SSID</label>
+                        <input type="text" name="ssid" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+                    </div>
+                    <div class="form-group" style="padding: 10px;">
+                        <label class="label-control">Senha</label>
+                        <input type="text" name="senha" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn" id="entrar" name="entrar">
+                            <b>Salvar/Conectar </b><i class="fa fa-sign-in"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer class="footer text-center">
+            Todos os Direitos Reservados para Unesp ©
+        </footer>
+    </body>
+    <script>
+        $(document).ready(() => {
+            $('input[name="enderecoIp"]').mask('000.000.000.000');
+        })
+    </script>
+</html>

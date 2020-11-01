@@ -1,0 +1,38 @@
+#corpo2{
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:100%;
+
+}
+#corpo1{
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:100%;
+
+}
+#corpo3{
+    position: absolute;
+    visibility: hidden;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:100%;
+
+}
+#corpo4{
+    position: absolute;
+    visibility: hidden;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:100%;
+
+}
+
+#bt:active{
+    background: #00d75e;
+}

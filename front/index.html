@@ -10,11 +10,14 @@
     <link rel="shortcut icon" href="./assets/img/unesp-logo-11.png">
     <link rel="stylesheet" href="./assets/css/bootstrap.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css.css" >
+
 
     <!-- js -->
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/bootstrap.js"></script>
     <script src="./assets/js/jquery.mask.min.js"></script>
+
 
     <style>
         .div1{
@@ -25,60 +28,323 @@
             padding-left: 15px;
             padding-right: 15px;
         }
-        button{
-            color: #fff;
-            background-color: #4142a5;
-            border-color: #4142a5;
+        .btnmenu{
             box-shadow: 10px 5px 5px grey;
         }
     </style>
 </head>
 <body>
+<div id="corpo1">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-blue justify-content-center">
+        <a class="navbar-brand">
+            <img src="./assets/img/unesp-logo-8.png" class="logo-mini" />
+        </a>
+    </nav>
+</header>
+<div id="wrap">
+    <div id="main" class="container-fluid clear-top">
+        <div class="row div1">
+            <div class="col-12">
+                <button href="dadostr.php" class="  btnmenu bg-blue navbar-light col-md-12 " style=" text-align: center; height:200px; width:100%">
+                   <div class="row" >
+                    <div  class="col-6"   style=" text-align: center;">
+                       <canvas  id="doughnutChart"></canvas>
+
+                   </div>
+                    <div class="col-6"  style=" text-align: center;">
+                        <canvas   id="doughnutChart1"></canvas>
+
+                    </div >
+                   </div>
+
+                </button>
+            </div>
+        </div>
+
+        <div class="row div2">
+            <div class="col-6">
+                <button id="br" href="config_rede.php" class="btnmenu bg-blue navbar-light" style="height: 100px">
+                    <b>Configuração de rede</b>
+                </button>
+            </div>
+            <div class="col-6">
+                <button id="bp" href="config_parametro.php" class="btnmenu bg-blue navbar-light col-md-6" style="height: 100px">
+                    <b>Configuração de parâmetro</b>
+                </button>
+            </div>
+        </div>
+
+        <div class="row div2">
+            <div class="col-12">
+                <button id="bg" class="btnmenu bg-blue navbar-light col-md-12" style="height:200px; width:100%">
+                    <b>Graficos</b>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer text-center">
+
+</footer>
+</div>
+
+
+<div id="corpo2" style="visibility: hidden">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-blue">
+        <a class="navbar-brand" id="bm">
+            <img src="./assets/img/unesp-logo-8.png" class="logo-mini" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" onclick="carregarMenu()">Dados em tempo Real</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="carregaConfigRede()">Configuração de rede</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="carregarParametros()">Configuração de parâmetro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="">Graficos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div id="wrap">
+    <div id="main" class="container-fluid clear-top">
+        <form >
+            <div class="form-group" style="padding: 10px;">
+                <label class="label-control"><b>Endereço Ip</b></label>
+                <input type="text" name="enderecoIp" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+            </div>
+            <div class="form-group" style="padding: 10px;">
+                <label class="label-control"><b>Numero de série</b></label>
+                <input type="text" name="numeroSerie" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+            </div>
+            <div class="form-group" style="padding: 10px;">
+                <label class="label-control"><b>SSID</b></label>
+                <input type="text" name="ssid" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+            </div>
+            <div class="form-group" style="padding: 10px;">
+                <label class="label-control"><b>Senha</b></label>
+                <input type="password" name="senha" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+            </div>
+            <div class="form-group text-center">
+                <button onclick="salvar()" class="btn btn1" id="entrar" name="entrar">
+                    <b>Salvar/Conectar </b><i class="fa fa-sign-in"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<footer class="footer text-center">
+
+</footer>
+</div>
+
+
+<div id="corpo3">
+
+    <style>
+        .btn1{
+            color: #fff;
+            background-color: #4142a5;
+            border-color: #4142a5;
+            box-shadow: 10px 5px 5px grey;
+        }
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
+
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-blue justify-content-center">
-            <a class="navbar-brand" href="index.html">
+        <nav class="navbar navbar-expand-lg navbar-light bg-blue">
+            <a class="navbar-brand" id="bm1">
                 <img src="./assets/img/unesp-logo-8.png" class="logo-mini" />
             </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="carregarMenu()">Dados em tempo Real</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="carregaConfigRede()">Configuração de rede</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="carregarParametros()">Configuração de parâmetro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="">Graficos</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
     <div id="wrap">
         <div id="main" class="container-fluid clear-top">
-            <div class="row div1">
+            <div >
+                <div class="form-group" style="padding: 10px;">
+                    <label class="label-control"><b>Tara</b></label>
+                    <input type="text" name="enderecoIp" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+                </div>
+                <div class="form-group" style="padding: 10px;">
+                    <label class="label-control"><b>Numero de calibração</b></label>
+                    <input type="text" name="numeroSerie" class="form-control" style="box-shadow: 10px 5px 5px grey;" autocomplete="off"/>
+                </div>
+                <div class="form-group" style="padding: 10px;">
+                    <label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+                    <label class="label-control"><b>Reset de umidade</b></label>
+                </div>
                 <div class="col-12">
-                    <button onclick="window.location.href='#'" class="btn col-md-12" style="height:200px; width:100%">
-                        <b>Dados em tempo Real</b>
+                    <button href="#" id="bt" class="btn btn1 col-md-12" style="height:100px; width:100%; border-radius: 50px">
+                        <b>Realizar tara automatica</b>
                     </button>
                 </div>
-            </div>
-
-            <div class="row div2">
-                <div class="col-6">
-                    <button onclick="window.location.href='config_rede.html'" class="btn col-md-6" style="height: 100px">
-                        <b>Configuração</b>
-                        <br>
-                        <b>de rede</b>
-                    </button>
-                </div>
-                <div class="col-6">
-                    <button onclick="window.location.href='config_parametro.html'" class="btn col-md-6" style="height: 100px">
-                        <b>Configuração</b>
-                        <br>
-                        <b>de parâmetro</b>
-                    </button>
-                </div>
-            </div>
-
-            <div class="row div2">
-                <div class="col-12">
-                    <button onclick="window.location.href='#'" class="btn col-md-12" style="height:200px; width:100%">
-                        <b>Graficos</b>
+                <br>
+                <div class="form-group text-center">
+                    <button onclick="salvar()"  class="btn btn1" id="entrar" name="entrar">
+                        <b>Salvar/Conectar </b><i class="fa fa-sign-in"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
     <footer class="footer text-center">
-        Todos os Direitos Reservados para Unesp ©
+
     </footer>
+
+
+</div>
+
+
+<div id="corpo4" style="visibility: hidden">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-blue">
+            <a class="navbar-brand" id="bm">
+                <img src="./assets/img/unesp-logo-8.png" class="logo-mini" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="carregarMenu()">Dados em tempo Real</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="carregaConfigRede()">Configuração de rede</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="carregarParametros()">Configuração de parâmetro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="">Graficos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="wrap">
+        <div id="main" class="container-fluid clear-top">
+            <form >
+                <label class="label-control"><b>dados do ultimo dia</b></label>
+                <div class="form-group text-center" style="overflow-y: scroll;">
+                   <img src="grafíco.PNG">
+                </div>
+                <div class="form-group text-center">
+                    <img src="tabela.PNG">
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer text-center">
+
+    </footer>
+</div>
+
 </body>
+<script>
+    $(document).ready(() => {
+        $('input[name="enderecoIp"]').mask('000.000.000.000');
+    })
+</script>
+
+
+
+<script src="js.js" ></script>
 </html>
